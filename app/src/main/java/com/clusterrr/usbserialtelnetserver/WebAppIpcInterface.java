@@ -1,9 +1,11 @@
 package com.clusterrr.usbserialtelnetserver;
 
+import com.hoho.android.usbserial.driver.UsbSerialPort;
+
 public class WebAppIpcInterface {
   UsbSerialPort mUsbSerialPort;
 
-  WebAppInterface(UsbSerialPort usbSerialPort) {
+  WebAppIpcInterface(UsbSerialPort usbSerialPort) {
       mUsbSerialPort = usbSerialPort;
   }
 
