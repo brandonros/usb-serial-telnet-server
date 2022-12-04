@@ -38,7 +38,7 @@ https://play.google.com/store/apps/details?id=com.clusterrr.usbserialtelnetserve
 
 ```shell
 docker build -t android-builder:0.0.1 .
-docker run --rm -it -v $(pwd):/mnt android-builder:0.0.1 bash "cd /mnt && gradle assembleDebug"
+docker run --rm -it -v $(pwd):/mnt android-builder:0.0.1 bash -c "cd /mnt && gradle --nodaemon assembleDebug"
 adb uninstall com.clusterrr.usbserialtelnetserver
 adb install ~/Desktop/UsbSerialTelnetServer-*.apk # from app/build/outputs/apk/debug/UsbSerialTelnetServer-*.apk
 adb shell monkey -p com.clusterrr.usbserialtelnetserver 1
