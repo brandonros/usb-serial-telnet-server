@@ -16,6 +16,9 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
+import android.webkit.WebView;
+import android.view.LayoutInflater;
+import android.view.View;
 
 import androidx.core.app.NotificationCompat;
 
@@ -103,7 +106,9 @@ public class UsbSerialTelnetService extends Service {
                     mUsbSerialThread.start();
                     mTcpServerThread.start();*/
                     // get webview
-                    WebView mWebView = findViewById(R.id.webview);
+                    LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    View rootView = layoutInflater.inflate(R.layout.activity_main, null);
+                    WebView mWebView = rootView.findViewById(R.id.webview);
                     // enable webview javascript
                     WebSettings webSettings = mWebView.getSettings();
                     webSettings.setJavaScriptEnabled(true);

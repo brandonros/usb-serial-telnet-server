@@ -1,5 +1,6 @@
 package com.clusterrr.usbserialtelnetserver;
 
+import android.webkit.JavascriptInterface;
 import com.hoho.android.usbserial.driver.UsbSerialPort;
 
 public class WebAppIpcInterface {
