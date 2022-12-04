@@ -209,6 +209,12 @@
                 app:layout_constraintStart_toEndOf="@+id/textRemoveLf"
                 app:layout_constraintTop_toBottomOf="@+id/switchNoLocalEcho" />
 
+            <WebView
+                android:id="@+id/webview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+            />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

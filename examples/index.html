@@ -5,6 +5,14 @@
   <body>
     <script type="text/javascript">
       const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+
+      const asciiToHex = (input) => {
+        let output = ''
+        for (let i = 0; i < input.length; ++i) {
+          output += input.charCodeAt(i).toString(16).padStart(2, '0')
+        }
+        return output
+      }
       
       const run = async () => {
         const socket = new WebSocket('ws://192.168.0.83:2323') // Galaxy-Tab-A7-Lite.local
@@ -15,9 +23,9 @@
           console.log(event.data)
         })
         for (;;) {
-          socket.send('61747A0D0A') // atz\r\n
+          socket.send(asciiToHex('atz\r\n'))
           await delay(100)
-          socket.send('6174690D0A') // ati\r\n
+          socket.send(asciiToHex('ati\r\n'))
           await delay(100)
         }
       }

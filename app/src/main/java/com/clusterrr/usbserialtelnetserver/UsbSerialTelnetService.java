@@ -93,14 +93,25 @@ public class UsbSerialTelnetService extends Service {
                             intent.getIntExtra(KEY_BAUD_RATE, 115200),
                             intent.getIntExtra(KEY_DATA_BITS, 8),
                             intent.getIntExtra(KEY_STOP_BITS, UsbSerialPort.STOPBITS_1),
-                            intent.getIntExtra(KEY_PARITY, UsbSerialPort.PARITY_NONE));
-                    ServerSocket serverSocket = new ServerSocket(intent.getIntExtra(KEY_TCP_PORT,2323));
+                            intent.getIntExtra(KEY_PARITY, UsbSerialPort.PARITY_NONE)
+                    );
+                    /*ServerSocket serverSocket = new ServerSocket(intent.getIntExtra(KEY_TCP_PORT,2323));
                     mUsbSerialThread = new UsbSerialThread(this, serialPort);
                     mTcpServerThread = new TcpServerThread(this, serverSocket);
                     mTcpServerThread.setNoLocalEcho(intent.getBooleanExtra(KEY_NO_LOCAL_ECHO, true));
-                    mTcpServerThread.setRemoveLf(intent.getBooleanExtra(KEY_REMOVE_LF, true));
+                    mTcpServerThread.setRemoveLf(intent.getBooleanExtra(KEY_REMOVE_LF, true));                    
                     mUsbSerialThread.start();
-                    mTcpServerThread.start();
+                    mTcpServerThread.start();*/
+                    // get webview
+                    WebView mWebView = findViewById(R.id.webview);
+                    // enable webview javascript
+                    WebSettings webSettings = mWebView.getSettings();
+                    webSettings.setJavaScriptEnabled(true);
+                    // add webview IPC interface
+                    mWebView.addJavascriptInterface(new WebAppIpcInterface(serialPort), "IPC");
+                    // load URL
+                    mWebView.loadUrl("http://192.168.0.85:8080/");
+                    // mark success
                     success = true;
                 }
             }
